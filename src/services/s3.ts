@@ -19,16 +19,21 @@ export const upload = multer({ storage }).single('image');
 
 // Function to upload image to S3
 export const uploadImageToS3 = async (file: Express.Multer.File): Promise<string> => {
-    const params = {
-        Bucket: process.env.AWS_S3_BUCKET as string,
-        Key: `${Date.now()}-${file.originalname}`,
-        Body: file.buffer,
-        ContentType: file.mimetype,
-    };
+    try {
+        const params = {
+            Bucket: process.env.AWS_S3_BUCKET as string,
+            Key: `${Date.now()}-${file.originalname}`,
+            Body: file.buffer,
+            ContentType: file.mimetype,
+        };
 
-    const command = new PutObjectCommand(params);
-    const response = await s3Client.send(command);
-    
-    const url = `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${params.Key}`;
-    return url;
+        const command = new PutObjectCommand(params);
+        const response = await s3Client.send(command);
+        
+        const url = `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${params.Key}`;
+        return url;
+    } catch (error) {
+        console.error('s3 upload error:', error);
+        throw new Error('failed to upload image to s3');
+    }
 };

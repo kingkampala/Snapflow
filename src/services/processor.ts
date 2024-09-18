@@ -40,13 +40,13 @@ event.on('imageUploaded', async (image) => {
 
             const processedImage = await sharp(bodyBuffer)
             .resize(300, 300)
-            .toFormat('jpeg')
+            .jpeg({ quality: 80 })
             .toBuffer();
 
             const processedImageKey = `processed-${imageKey}`;
             const uploadParams = {
                 Bucket: process.env.AWS_S3_BUCKET as string,
-                Key: imageKey,
+                Key: processedImageKey,
                 Body: processedImage,
                 ContentType: 'image/jpeg'
             };

@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { event } from './event';
+import Email from '../models/email';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -12,13 +13,14 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// Email notification listener
 event.on('imageProcessed', async (image, processedImageKey) => {
     try {
-        // List of users to notify (this could come from a database)
-        const usersToNotify = ['user1@example.com', 'user2@example.com'];
+        const notifyEmails = await Email.findAll({ attributes: ['email'] });
+        const notifyUsers = notifyEmails.map((emailRecord) => emailRecord.email);
 
-        const emailPromises = usersToNotify.map((email) => {
+        console.log('Emails to notify:', notifyUsers);
+
+        const emailPromises = notifyUsers.map((email) => {
             return transporter.sendMail({
                 from: `'Snapflow' <${process.env.EMAIL_USER}>`,
                 to: email,
@@ -27,7 +29,6 @@ event.on('imageProcessed', async (image, processedImageKey) => {
             });
         });
 
-        // Send all emails
         await Promise.all(emailPromises);
         console.log('email notifications sent successfully');
     } catch (error) {

@@ -35,7 +35,6 @@ event.on('imageUploaded', async (image) => {
         const { Body } = await s3Client.send(command);
 
         if (Body instanceof Readable) {
-            // convert the S3 ReadableStream to a buffer
             const bodyBuffer = await streamToBuffer(Body);
 
             const processedImage = await sharp(bodyBuffer)
@@ -58,7 +57,7 @@ event.on('imageUploaded', async (image) => {
 
             event.emit('imageProcessed', image, processedImageKey);
         } else {
-            throw new Error('body is not a Readable stream');
+            throw new Error('body is not a readable stream');
         }
     } catch (error) {
         console.error('error processing image:', error);

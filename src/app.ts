@@ -11,9 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 
 import imageRoutes from './routes/image';
 import commentRoutes from './routes/comment';
+import emailRoutes from './routes/email';
 
-app.use(`/upload`, imageRoutes);
+app.use(`/image`, imageRoutes);
 app.use(`/comment`, commentRoutes);
+app.use(`/email`, emailRoutes);
 
 const { DB_URL } = process.env;
 

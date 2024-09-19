@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-event.on('imageProcessed', async (image, processedImageKey) => {
+event.on('imageProcessed', async (image, signedUrl) => {
     try {
         const notifyEmails = await Email.findAll({ attributes: ['email'] });
         const notifyUsers = notifyEmails.map((emailRecord) => emailRecord.email);
@@ -25,7 +25,7 @@ event.on('imageProcessed', async (image, processedImageKey) => {
                 from: `'Snapflow' <${process.env.EMAIL_USER}>`,
                 to: email,
                 subject: 'New Image Processed',
-                text: `Hello,\n\nA new image has been processed.\nView it here: ${process.env.AWS_S3_BUCKET_URL}/${processedImageKey}\n\nBest Regards,\nSnapflow Team`,
+                text: `Hello,\n\n\nA new image has been processed. View it here: ${signedUrl}\n\nBest Regards,\nSnapflow Team`,
             });
         });
 

@@ -2,6 +2,7 @@ import sharp from 'sharp';
 import { event } from './event';
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { Readable } from 'stream';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -38,8 +39,8 @@ event.on('imageUploaded', async (image) => {
             const bodyBuffer = await streamToBuffer(Body);
 
             const processedImage = await sharp(bodyBuffer)
-            .resize(300, 300)
-            .jpeg({ quality: 80 })
+            .resize({ width: 300 })
+            .jpeg({ quality: 90 })
             .toBuffer();
 
             const processedImageKey = `processed-${imageKey}`;
@@ -53,9 +54,14 @@ event.on('imageUploaded', async (image) => {
             const uploadCommand = new PutObjectCommand(uploadParams);
             await s3Client.send(uploadCommand);
 
+            const signedUrl = await getSignedUrl(s3Client, new GetObjectCommand({
+                Bucket: process.env.AWS_S3_BUCKET as string,
+                Key: processedImageKey
+            }), { expiresIn: 3600 });
+
             console.log(`image processed and uploadeed as ${processedImageKey}`);
 
-            event.emit('imageProcessed', image, processedImageKey);
+            event.emit('imageProcessed', image, signedUrl);
         } else {
             throw new Error('body is not a readable stream');
         }

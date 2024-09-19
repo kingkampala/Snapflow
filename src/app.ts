@@ -10,8 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import imageRoutes from './routes/image';
+import commentRoutes from './routes/comment';
 
-app.use(`/images`, imageRoutes);
+app.use(`/upload`, imageRoutes);
+app.use(`/comment`, commentRoutes);
 
 const { DB_URL } = process.env;
 

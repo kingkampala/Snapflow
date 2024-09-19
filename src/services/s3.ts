@@ -1,6 +1,5 @@
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import multer from 'multer';
-import { Request } from 'express';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -13,11 +12,11 @@ const s3Client = new S3Client({
     }
 });
 
-// Multer setup for file upload
+// multer setup for file upload
 const storage = multer.memoryStorage();
 export const upload = multer({ storage }).single('image');
 
-// Function to upload image to S3
+// function to upload image to S3
 export const uploadImageToS3 = async (file: Express.Multer.File): Promise<string> => {
     try {
         const params = {

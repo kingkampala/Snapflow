@@ -3,6 +3,9 @@ import { Client } from 'pg';
 import syncDb from './sync';
 import dotenv from 'dotenv';
 
+import './services/processor';
+import './services/email';
+
 const app: Application = express();
 dotenv.config();
 

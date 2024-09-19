@@ -18,14 +18,14 @@ event.on('imageProcessed', async (image, processedImageKey) => {
         const notifyEmails = await Email.findAll({ attributes: ['email'] });
         const notifyUsers = notifyEmails.map((emailRecord) => emailRecord.email);
 
-        console.log('Emails to notify:', notifyUsers);
+        console.log('emails to notify:', notifyUsers);
 
         const emailPromises = notifyUsers.map((email) => {
             return transporter.sendMail({
                 from: `'Snapflow' <${process.env.EMAIL_USER}>`,
                 to: email,
                 subject: 'New Image Processed',
-                text: `An image has been processed. View it here: ${process.env.AWS_S3_BUCKET_URL}/processed-${processedImageKey}`,
+                text: `Hello,\n\nA new image has been processed.\nView it here: ${process.env.AWS_S3_BUCKET_URL}/${processedImageKey}\n\nBest Regards,\nSnapflow Team`,
             });
         });
 

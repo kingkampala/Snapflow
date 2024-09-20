@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "docker_ec2" {
   ami           = "ami-010b74bc1a8b29122"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name      = "snapflow-server-key"
   associate_public_ip_address = true
 

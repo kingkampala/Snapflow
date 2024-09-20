@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 383090558519.dkr.ecr.<your-region>.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t snapflow-app .
+      - docker tag snapflow-app:latest 383090558519.dkr.ecr.eu-north-1.amazonaws.com/snapflow-app:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 383090558519.dkr.ecr.eu-north-1.amazonaws.com/snapflow-app:latest

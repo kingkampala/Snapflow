@@ -41,16 +41,16 @@ Make sure you have the following installed:
 * Gmail account for email notifications (or any other SMTP service)
 
 **Installation**
-1. **Clone the Repository**
+**1. Clone the Repository**
 ```
 git clone https://github.com/kingkampala/snapflow.git
 cd snapflow
 ```
-2. **Install Dependencies**
+**2. Install Dependencies**
 ```
 npm install
 ```
-3. **Create a `.env` File**: Create a `.env` file in the root directory and populate it with the following:
+**3. Create a `.env` File**: Create a `.env` file in the root directory and populate it with the following:
 ```
 AWS_REGION=your_aws_region
 AWS_ACCESS_KEY_ID=your_access_key_id
@@ -60,11 +60,11 @@ EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=your_email_password
 DATABASE_URL=postgres://user:password@localhost:5432/your_db_name
 ```
-4. **Run Database Migrations**: If you have set up Sequelize for your database, run:
+**4. Run Database Migrations**: If you have set up Sequelize for your database, run:
 ```
 npx sequelize-cli db:migrate
 ```
-5. **Start the Application**
+**5. Start the Application**
 ```
 npm start
 ```

@@ -5,6 +5,6 @@ const router = Router();
 
 router.post('/', postNotificationEmail);
 
-router.get('/', getNotificationEmail);
+router.get('/:id', getNotificationEmail);
 
 export default router;

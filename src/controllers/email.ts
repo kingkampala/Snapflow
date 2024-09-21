@@ -19,15 +19,17 @@ export const postNotificationEmail = async (req: Request, res: Response) => {
 
 export const getNotificationEmail = async (req: Request, res: Response) => {
     try {
-        const emails = await Email.findAll();
+        const { id } = req.params;
 
-        if (emails.length === 0) {
-            return res.status(200).json([]);
+        const email = await Email.findByPk(id);
+
+        if (!email) {
+            return res.status(404).json({ message: 'email not found' });
         }
 
-        return res.status(200).json(emails);
+        return res.status(200).json(email);
     } catch (error) {
-        console.error('error fetching notification emails:', error);
+        console.error('error fetching notification email:', error);
         return res.status(500).json({ message: 'server error' });
     }
 };

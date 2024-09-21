@@ -77,7 +77,7 @@ You can interact with the API using tools like Postman or curl.
 For those who wish to test the application live with Postman or Web browser, you can access the deployed version at: **`http://51.20.104.72/`** as base URL.
 
 ### API Endpoints
-1. **Upload an Image**
+**1. Upload an Image**
 * **Endpoint**: `POST /image`
 * **Request Body**:
   * `description`: string
@@ -85,13 +85,13 @@ For those who wish to test the application live with Postman or Web browser, you
 * **Response**:
   * `201 Created`: Returns the newly created image record.
 
-2. **Get All Images**
+**2. Get All Images**
 * **Endpoint**: `GET /image`
 * **Response**:
   * `200 OK`: Returns an array of image records.
   * `404 Not Found`: If no images are found.
 
-3. **Post a Comment on an Image**
+**3. Post a Comment on an Image**
 * **Endpoint**: `POST /comment/:imageId`
 * **Request Body**:
   * `content`: string
@@ -99,13 +99,13 @@ For those who wish to test the application live with Postman or Web browser, you
   * `201 Created`: Returns the newly created comment.
   * `404 Not Found`: If the image does not exist.
 
-4. **Get Comments for an Image**
+**4. Get Comments for an Image**
 * **Endpoint**: `GET /comment/:imageId`
 * **Response**:
   * `200 OK`: Returns an array of comments.
   * `404 Not Found`: If the image does not exist.
 
-5. **Add Notification Email**
+**5. Add Notification Email**
 * **Endpoint**: `POST /email`
 * **Request Body**:
   * `email`: string
@@ -113,8 +113,14 @@ For those who wish to test the application live with Postman or Web browser, you
   * `201 Created`: Returns the newly added email.
   * `400 Bad Request`: If email is not provided.
 
-6. **Get Notification Email by ID**
+**6. Get Notification Email by ID**
 * **Endpoint**: `GET /email/:id`
 * **Response**:
   * `200 OK`: Returns the email record.
   * `404 Not Found`: If the email does not exist.
+
+### Contributing
+Contributions are welcome! Please open an issue or submit a pull request.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for more details.

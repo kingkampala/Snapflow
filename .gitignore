@@ -1,5 +1,4 @@
 node_modules
-.terraform.lock.hcl
 .env
 .gitattributes
 package-lock.json

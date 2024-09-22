@@ -41,6 +41,7 @@ Make sure you have the following installed:
 * Gmail account for email notifications (or any other SMTP service)
 
 **Installation**
+
 **1. Clone the Repository**
 ```
 git clone https://github.com/kingkampala/snapflow.git
@@ -57,8 +58,8 @@ AWS_ACCESS_KEY_ID=your_access_key_id
 AWS_SECRET_ACCESS_KEY=your_secret_access_key
 AWS_S3_BUCKET=your_s3_bucket_name
 EMAIL_USER=your_email@gmail.com
-EMAIL_PASSWORD=your_email_password
-DATABASE_URL=postgres://user:password@localhost:5432/your_db_name
+EMAIL_PASSWORD=your_email_app_password
+DB_URL=postgres://user:password@localhost:5432/your_db_name
 ```
 **4. Run Database Migrations**: If you have set up Sequelize for your database, run:
 ```

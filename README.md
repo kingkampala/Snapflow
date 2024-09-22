@@ -69,25 +69,29 @@ npx sequelize-cli db:migrate
 ```
 npm start
 ```
-Your application should now be running locally on `http://localhost:2810`.
+Your application should now be running locally on **`http://localhost:{port}`**.
 
 ### Usage
 To interact with the SnapFlow API, you can use tools like Postman or curl. Follow these steps to test the endpoints after successfully setting up the application:
 
 **1. Add Your Email to the Database**:
+
 Begin by sending a `POST` request to `/email`, including your email in the request body. This email will be used for receiving notifications.
 
 **2. Upload an Image**:
+
 After adding your email, upload an image by sending a `POST` request to `/image`. The image will be processed, and a notification email containing the processed image's link will be sent to the email you provided. Please note, the link to the processed image will expire after 1 hour.
 
 **3. Add a Comment to the Image**:
+
 You can add comments to the image you uploaded by sending a `POST` request to `/comment/{imageId}`, where `{imageId}` is the ID of the image you wish to comment on.
 
 **4. Testing with Postman or Browser**:
+
 Once your application is running locally or deployed on AWS, you can test all API endpoints using Postman.
 
- * **For Local Testing**: Use `http://localhost:{port}` as the base URL in your Postman requests to test all endpoints.
- * **For Deployed Testing**: Use the AWS deployed link at `http://51.20.104.72/`. Note that only **GET** requests can be tested using the deployed AWS link.
+ * **For Local Testing**: Use **`http://localhost:{port}`** or **`http://51.20.104.72/`** as the base URL in your Postman requests to test all endpoints.
+ * **For Deployed Testing**: Use the AWS deployed link at **`http://51.20.104.72/`** as the base URL. Note that only `GET` requests can be tested using the deployed AWS link in you Web browser.
 
 ### API Endpoints
 **1. Upload an Image**

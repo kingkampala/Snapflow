@@ -25,7 +25,14 @@ SnapFlow is a backend service designed to handle image uploads, process images, 
 * **TypeScript**: Superset of JavaScript for type safety
 * **Express.js**: Web framework
 * **Sequelize**: ORM for database interactions
+* **RESTful API**: Architectural style for API design
+* **Docker**: Containerization for application portability
+* **Terraform**: Infrastructure as code for managing cloud resources
+* **AWS S3**: Object storage service
 * **AWS SDK**: AWS services integration
+* **AWS EC2**: Compute service for hosting the application
+* **AWS ECS**: Container orchestration service
+* **AWS ECR**: Container registry service
 * **Sharp**: Image processing library
 * **Nodemailer**: Email sending service
 * **PostgreSQL**: Database management system

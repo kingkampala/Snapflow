@@ -2,7 +2,7 @@
 
 
 ### Overview
-SnapFlow is a backend service designed to handle image uploads, process images, and send notifications via email when new images are processed. It leverages AWS S3 for storage, Sharp for image processing, and Nodemailer for sending email notifications.
+SnapFlow is a backend service designed to handle image uploads, process images, and send notifications via email when new images are processed. It leverages AWS S3 for storage, Sharp for image processing and Nodemailer for sending email notifications.
 
 ### Table of Contents
 * Features

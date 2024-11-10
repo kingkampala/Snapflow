@@ -79,7 +79,7 @@ npm start
 Your application should now be running locally on **`http://localhost:{port}`**.
 
 ### Usage
-To interact with the SnapFlow API, you can use tools like Postman or curl. Follow these steps to test the endpoints after successfully setting up the application:
+To interact with the SnapFlow API, you can use tools like Postman or Curl. Follow these steps to test the endpoints after successfully setting up the application:
 
 **1. Add Your Email to the Database**:
 
@@ -97,8 +97,8 @@ You can add comments to the image you uploaded by sending a `POST` request to `/
 
 Once your application is running locally or deployed on AWS, you can test all API endpoints using Postman.
 
- * **For Local Testing**: Use **`http://localhost:{port}`** or **`http://51.20.104.72/`** as the base URL in your Postman requests to test all endpoints.
- * **For Deployed Testing**: Use the AWS deployed link at **`http://51.20.104.72/`** as the base URL. Note that only `GET` requests can be tested using the deployed AWS link in you Web browser.
+ * **For Local Testing**: Use **`http://localhost:{port}`** as the base URL in your Postman requests to test all endpoints.
+ * **For Deployed Testing**: Use the Render deployed link at **`https://snapflow.onrender.com`** OR AWS deployed link at **`http://51.20.104.72/`** as the base URL. Note that only `GET` requests can be tested using the deployed AWS link in you Web browser, other requests can be tested as well using the Render deployed link in your Postman.
 
 ### API Endpoints
 **1. Upload an Image**

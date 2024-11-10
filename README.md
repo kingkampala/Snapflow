@@ -104,8 +104,8 @@ Once your application is running locally or deployed on Render or AWS, you can t
 **1. Upload an Image**
 * **Endpoint**: `POST /image`
 * **Request Body**:
-  * `description`: string
-  * **Form Data**: `file`: image file
+  * **Form Data**: `image`: image file
+  *                `description`: string
 * **Response**:
   * `201 Created`: Returns the newly created image record.
 

@@ -105,7 +105,7 @@ Once your application is running locally or deployed on Render or AWS, you can t
 * **Endpoint**: `POST /image`
 * **Request Body**:
   * **Form Data**: `image`: image file
-  *                `description`: string
+  * `description`: string
 * **Response**:
   * `201 Created`: Returns the newly created image record.
 
